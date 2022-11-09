@@ -50,6 +50,7 @@ a)component directtives
 
 b)structural directtives    
     1)ngFor
+    2)ngIf - validation  
 
 
 AngularForms

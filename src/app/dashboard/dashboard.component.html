@@ -10,16 +10,22 @@
     <div class="text-center mt-4 fs-6 fw-bold name">
         DEPOSIT
     </div>
-    <form action="" class="text-center p-3 mt-3 ">
+    <form [formGroup]="registerForm" action="" class="text-center p-3 mt-3 ">
         <div class="form-field d-flex align-content-center m-3">
-            <input [(ngModel)]="amount" style="margin-left: auto; margin-right: auto;" type="text" name="amount" id="amount" placeholder="amount">
+            <input formControlName="amount" style="margin-left: auto; margin-right: auto;" type="number" name="amount" id="amount" placeholder="amount">
         </div>
+        <div *ngIf="this.registerForm.get('amount')?.errors&&this.registerForm.get('amount')?.touched" style="color: red;">Please enter amount</div>
+
         <div class="form-field d-flex align-content-center m-3">
-            <input [(ngModel)]="acno" style="margin-left: auto; margin-right: auto;" type="text" name="acno" id="login_acno" placeholder="accounts">
+            <input formControlName="acno" style="margin-left: auto; margin-right: auto;" type="number" name="acno" id="login_acno" placeholder="accounts">
         </div>
+        <div *ngIf="this.registerForm.get('acno')?.errors&&this.registerForm.get('acno')?.touched" style="color: red;">Invalid account number</div>
+
         <div class="form-field d-flex align-items-center m-3">
-            <input [(ngModel)]="pswd" style="margin-left: auto; margin-right: auto;" type="password" name="password" id="login_pswd" placeholder="Password">
+            <input formControlName="pswd" style="margin-left: auto; margin-right: auto;" type="password" name="password" id="login_pswd" placeholder="Password">
         </div>
+        <div *ngIf="this.registerForm.get('pswd')?.errors&&this.registerForm.get('pswd')?.touched" style="color: red;">Invalid Password</div>
+
         <button class="btn btn-primary mt-3" (click)="deposit()" type="button">Deposit</button>
     </form>
     <div class="text-center m-3">
@@ -34,16 +40,22 @@
     <div class="text-center mt-4 fs-6 fw-bold name">
         WITHDRAW
     </div>
-    <form action="" class="text-center p-3 mt-3 ">
+    <form [formGroup]="registerForm" action="" class="text-center p-3 mt-3 ">
         <div class="form-field d-flex align-content-center m-3">
-            <input [(ngModel)]="amount1" style="margin-left: auto; margin-right: auto;" type="text" name="amount" id="amount" placeholder="amount">
+            <input formControlName="amount1" style="margin-left: auto; margin-right: auto;" type="number" name="amount" id="amount" placeholder="amount">
         </div>
+        <div *ngIf="this.registerForm.get('amount1')?.errors&&this.registerForm.get('amount1')?.touched" style="color: red;">Please enter amount</div>
+
         <div class="form-field d-flex align-content-center m-3">
-            <input [(ngModel)]="acno1" style="margin-left: auto; margin-right: auto;" type="text" name="acno" id="login_acno" placeholder="accounts">
+            <input formControlName="acno1" style="margin-left: auto; margin-right: auto;" type="number" name="acno" id="login_acno" placeholder="accounts">
         </div>
+        <div *ngIf="this.registerForm.get('acno1')?.errors&&this.registerForm.get('acno1')?.touched" style="color: red;">Invalid account number</div>
+
         <div class="form-field d-flex align-items-center m-3">
-            <input [(ngModel)]="pswd1" style="margin-left: auto; margin-right: auto;" type="password" name="password" id="login_pswd" placeholder="Password">
+            <input formControlName="pswd1" style="margin-left: auto; margin-right: auto;" type="password" name="password" id="login_pswd" placeholder="Password">
         </div>
+        <div *ngIf="this.registerForm.get('pswd1')?.errors&&this.registerForm.get('pswd1')?.touched" style="color: red;">Invalid Password</div>
+
         <button class="btn btn-primary mt-3" (click)="withdraw()" type="button">Withdraw</button>
     </form>
     <div class="text-center m-3">

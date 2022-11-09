@@ -8,13 +8,17 @@
         My Bank
     </div>
     <!-- <h4>{{aim}}</h4> -->
-    <form action="" class="text-center p-3 mt-3 ">
+    <form [formGroup]="registerForm" action="" class="text-center p-3 mt-3 ">
         <div class="form-field d-flex align-content-center m-3">
-            <input [(ngModel)]="acno"  style="margin-left: auto; margin-right: auto;" type="text" name="acno" id="login_acno" [placeholder]="accounts">
+            <input formControlName="acno" style="margin-left: auto; margin-right: auto;" type="number" name="acno" id="login_acno" [placeholder]="accounts">
         </div>
+        <div *ngIf="this.registerForm.get('acno')?.errors&&this.registerForm.get('acno')?.touched" style="color: red;">Invalid account number</div>
+
         <div class="form-field d-flex align-items-center m-3">
-            <input [(ngModel)]="pswd"  style="margin-left: auto; margin-right: auto;" type="password" name="pswd" id="login_pswd" placeholder="Password">
+            <input formControlName="pswd" style="margin-left: auto; margin-right: auto;" type="password" name="pswd" id="login_pswd" placeholder="Password">
         </div>
+        <div *ngIf="this.registerForm.get('pswd')?.errors&&this.registerForm.get('pswd')?.touched" style="color: red;">Invalid Password</div>
+
         <button class="btn btn-primary mt-3" (click)="login()" type="button">Login</button>
     </form>
     <div class="text-center m-3">

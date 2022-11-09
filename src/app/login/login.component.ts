@@ -2,6 +2,7 @@
 
 
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -14,10 +15,17 @@ export class LoginComponent implements OnInit {
 
   aim='your perfect banking partner';
   accounts="enter ur Acno here";
-  acno='';
-  pswd='';
+  // acno='';
+  // pswd='';
+    //register model
+    registerForm=this.fb.group({ //model
+      acno:['', [Validators.required, Validators.pattern('[0-9]*')]], //array // * combinations
+      pswd:['', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')]] //array
+  
+      // control goes to this.register.html
+    })
 
-  constructor(private router:Router, private ds:DataService) { } //first execution
+  constructor(private fb:FormBuilder, private router:Router, private ds:DataService) { } //first execution
   //dependancy injection
 
 
@@ -33,18 +41,20 @@ export class LoginComponent implements OnInit {
 
   acnoChange(event:any){
     // console.log(event);
-    console.log(event.target.value);
-    this.acno=event.target.value;
+    // console.log(event.target.value);
+    this.registerForm.value.acno=event.target.value;  //this.registerForm.value.acno - to call from registerForm and value
   }
   pswdChange(event:any){
-    console.log(event.target.value);
-    this.pswd=event.target.value;
+    // console.log(event.target.value);
+    this.registerForm.value.pswd=event.target.value;
   }
   login(){
     // alert('Login clicked');
 
-    var acno=this.acno;
-    var pswd=this.pswd;
+  if(this.registerForm.valid) {
+
+    var acno=this.registerForm.value.acno;
+    var pswd=this.registerForm.value.pswd;
 
     // var userDetails=this.userDetails;
     const result=this.ds.login(acno,pswd);
@@ -55,6 +65,10 @@ export class LoginComponent implements OnInit {
     } else {
       alert("user does not exist") 
     }
+  }else {
+    console.log(this.registerForm.get('uname')?.errors);
+    
+  }
   }
 
 
