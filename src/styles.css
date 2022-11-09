@@ -1,1 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background-color: #FFEFD6;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+}
+.name{
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+}
+.main-div{
+    display: flex;
+}
+
+a{
+    color: #fff;
+}
+
+input{
+    border: none;
+    border-radius: 8px;
+    width: 60rem;
+    margin-left: auto; 
+    margin-right: auto;
+    padding: 6px;
+}
+
+.wrapper {
+    background-color: #3A8891;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    padding: 30px;
+    border-radius: 10px;
+  
+}
+
+.logo{
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+img {
+    width: 100%;
+}@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import '~@fortawesome/fontawesome-free/scss/regular.scss';
+@import '~@fortawesome/fontawesome-free/scss/brands.scss';
+ 
+@import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
